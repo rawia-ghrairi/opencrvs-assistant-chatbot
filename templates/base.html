@@ -1,42 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Chatbot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistant OpenCRVS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-<div class="container">
-    <div class="chatbox">
-        <div class="chatbox__support">
-            <div class="chatbox__header">
-                <div class="chatbox__image--header">
-                    <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-5--v1.png" alt="image">
-                </div>
-                <div class="chatbox__content--header">
-                    <h4 class="chatbox__heading--header">Chat support</h4>
-                    <p class="chatbox__description--header">Hi. My name is Sam. How can I help you?</p>
-                </div>
+
+    <div class="main-container">
+        <!-- Colonne gauche : Logo + description -->
+        <div class="left-panel">
+            <div class="logo2-container">
+                <img src="{{ url_for('static', filename='images/logo2.png') }}" alt="OpenCRVS Logo" class="logo2">
             </div>
-            <div class="chatbox__messages">
-                <div></div>
+            <h1 class="left-title">The gold standard for digital civil registration</h1>
+            <div class="description">
+                <p>
+                    An open-source, digital civil registration system designed to positively transform civil registration services in low-resource settings.
+                </p>
             </div>
-            <div class="chatbox__footer">
-                <input type="text" placeholder="Write a message...">
-                <button class="chatbox__send--footer send__button">Send</button>
+            <div class="button-group">
+                <button class="btn-demo" onclick="window.location.href='https://www.opencrvs.org/book-a-demo'">Book a demo</button>
+             <button class="btn-learn" onclick="window.location.href='https://www.opencrvs.org/product'">Learn more </button>
             </div>
         </div>
-        <div class="chatbox__button">
-            <button><img src="{{ url_for('static', filename='images/chatbox-icon.svg') }}" /></button>
+
+        <!-- Colonne droite : Chatbot -->
+        <div class="right-panel">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h3>💡 OpenCRVS Assistant</h3>
+                    <p>Ask me about deploying OpenCRVS locally !</p>
+                </div>
+                <div class="chat-box" id="chatbox">
+                    <div class="messages" id="chat-messages"></div>
+                    <div class="input-area">
+                        <input type="text" id="user-input" placeholder="Écrivez votre message ici...">
+                        <button id="send-btn">
+                            <img src="{{ url_for('static', filename='images/send-icon2.png') }}" alt="Envoyer" class="send-icon">
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
-    <script>
-        $SCRIPT_ROOT = {{ request.script_root|tojson }};
-    </script>
-    <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
-
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>

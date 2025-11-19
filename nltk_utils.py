@@ -1,10 +1,10 @@
 import numpy as np
 import nltk
-# nltk.download('punkt')
+nltk.download('punkt')
 from nltk.stem.porter import PorterStemmer
 stemmer = PorterStemmer()
 
-
+# we have some utility functions to work with natural functions
 def tokenize(sentence):
     """
     split sentence into array of words/tokens

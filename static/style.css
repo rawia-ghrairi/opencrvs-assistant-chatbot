@@ -1,200 +1,207 @@
-* {
-    box-sizing: border-box;
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: hsl(220, 43%, 97%);
     margin: 0;
     padding: 0;
+    height: 100vh;
 }
 
-body {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 400;
-    font-size: 100%;
-    background: #F1F1F1;
+/* Conteneur principal en flex pour deux colonnes */
+.main-container {
+    display: flex;
+    height: 100%;
 }
 
-*, html {
-    --primaryGradient: linear-gradient(93.12deg, #581B98 0.52%, #9C1DE7 100%);
-    --secondaryGradient: linear-gradient(268.91deg, #581B98 -2.14%, #9C1DE7 99.69%);
-    --primaryBoxShadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
-    --secondaryBoxShadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
-    --primary: #581B98;
-}
-
-/* CHATBOX
-=============== */
-.chatbox {
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
-}
-
-/* CONTENT IS CLOSE */
-.chatbox__support {
+/* Colonne gauche : Logo + description */
+.left-panel {
+    width: 40%;
+    background: hsl(210, 36%, 96%);
     display: flex;
     flex-direction: column;
-    background: #eee;
-    width: 300px;
-    height: 350px;
-    z-index: -123456;
-    opacity: 0;
-    transition: all .5s ease-in-out;
+    align-items: center;
+    justify-content:flex-start;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 15px 0 0 15px; /* coins arrondis gauche */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-/* CONTENT ISOPEN */
-.chatbox--active {
-    transform: translateY(-40px);
-    z-index: 123456;
-    opacity: 1;
 
+
+/* Colonne droite : Chatbot */
+.right-panel {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* BUTTON */
-.chatbox__button {
-    text-align: right;
+/* Chatbox déjà existante, on garde ton CSS */
+.chat-container {
+    width: 700px;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
 }
 
-.send__button {
-    padding: 6px;
-    background: transparent;
+.chat-header {
+    background: #0078D7;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.chat-header h3 {
+    margin: 0;
+}
+
+.chat-box {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+}
+
+.messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.message {
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+.user-message {
+    background-color: #85cefb;
+    align-self: flex-end;
+}
+
+.bot-message {
+    background-color: #E8E8E8;
+    align-self: flex-start;
+}
+
+.input-area {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.input-area input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.input-area button {
+    background: #0078D7;
+    color: white;
     border: none;
-    outline: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    margin-left: 8px;
     cursor: pointer;
 }
-
-
-/* HEADER */
-.chatbox__header {
-    position: sticky;
-    top: 0;
-    background: orange;
+.logo2-container {
+    width: 100%;
+    display: flex;  
+    top:0%;       /* centre horizontalement le logo */
+    margin-bottom: 10px;
 }
 
-/* MESSAGES */
-.chatbox__messages {
-    margin-top: auto;
+.logo2 {
+    width: 300px;                     /* taille du logo ajustable */
+    height: auto;
+    border: none;               /* Supprime la bordure par défaut */
+    border-radius: 25px;
+}
+
+.description {                          
     display: flex;
-    overflow-y: scroll;
-    flex-direction: column-reverse;
+    align-items: center;               
+    justify-content: center;           
+    text-align: center;
+    margin-bottom: 20px; 
 }
 
-.messages__item {
-    background: orange;
-    max-width: 60.6%;
-    width: fit-content;
+.description p {
+    font-size: 20px;
+    color: #212020;
+    line-height: 1.6;
 }
 
-.messages__item--operator {
-    margin-left: auto;
-}
 
-.messages__item--visitor {
-    margin-right: auto;
+.send-icon {
+    width: 24px;      /* taille de l'icône */
+    height: 24px;
 }
-
-/* FOOTER */
-.chatbox__footer {
-    position: sticky;
-    bottom: 0;
-}
-
-.chatbox__support {
-    background: #f9f9f9;
-    height: 450px;
-    width: 350px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-}
-
-/* HEADER */
-.chatbox__header {
-    background: var(--primaryGradient);
+.input-area button {
+    background: #0078D7;  /* tu peux garder ou mettre transparent */
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    margin-left: 8px;
+    cursor: pointer;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 15px 20px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    box-shadow: var(--primaryBoxShadow);
 }
 
-.chatbox__image--header {
-    margin-right: 10px;
+.input-area button:hover {
+    background: #005fa3; /* effet hover sympa */
+}
+.button-group {
+    display: flex;              /* Aligne les boutons horizontalement */
+    gap: 15px;                  /* Espace entre les boutons */
+    justify-content: center;    /* Centrer les boutons dans la div (optionnel) */
+    margin-top: 10px;           /* Espace au-dessus de la div */
 }
 
-.chatbox__heading--header {
-    font-size: 1.2rem;
-    color: white;
-}
-
-.chatbox__description--header {
-    font-size: .9rem;
-    color: white;
-}
-
-/* Messages */
-.chatbox__messages {
-    padding: 0 20px;
-}
-
-.messages__item {
-    margin-top: 10px;
-    background: #E0E0E0;
-    padding: 8px 12px;
-    max-width: 70%;
-}
-
-.messages__item--visitor,
-.messages__item--typing {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-.messages__item--operator {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    background: var(--primary);
-    color: white;
-}
-
-/* FOOTER */
-.chatbox__footer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 20px;
-    background: var(--secondaryGradient);
-    box-shadow: var(--secondaryBoxShadow);
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    margin-top: 20px;
-}
-
-.chatbox__footer input {
-    width: 80%;
-    border: none;
-    padding: 10px 10px;
-    border-radius: 30px;
-    text-align: left;
-}
-
-.chatbox__send--footer {
-    color: white;
-}
-
-.chatbox__button button,
-.chatbox__button button:focus,
-.chatbox__button button:visited {
-    padding: 10px;
-    background: white;
-    border: none;
-    outline: none;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
-    border-bottom-left-radius: 50px;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+.button-group button {
+    border: none;               /* Supprime la bordure par défaut */
+    border-radius: 25px;        /* Bords arrondis */
+    padding: 10px 25px;         /* Hauteur et largeur du bouton */
+    font-size: 16px;            /* Taille du texte */
     cursor: pointer;
+    transition: all 0.3s ease; /* Transition pour hover / click */
+}
+
+.btn-demo {
+    background-color: #0078D7;  /* Bleu */
+    color: white;
+}
+
+.btn-demo:hover {
+    background-color: #005fa3;  /* Bleu foncé au survol */
+}
+
+.btn-demo:active {
+    background-color: #004f82;  /* Bleu encore plus foncé au clic */
+    color: white;               /* Texte blanc */
+}
+
+.btn-learn {
+    background-color: #e0e0e0;  /* Couleur claire */
+    color: #333;
+}
+
+.btn-learn:hover {
+    background-color: #d0d0d0;  /* Un peu plus foncé au survol */
+}
+
+.btn-learn:active {
+    background-color: #c0c0c0;  /* Encore plus foncé au clic */
+    color: #333;
+}
+.left-title {
+    font-size: 52px;
+    font-weight: 600;
+    color: #0078D7; /* bleu OpenCRVS */
+    margin: 30px 0 20px 0; /* espace entre le logo et le titre et entre le titre et le paragraphe */
+    text-align: center;
 }

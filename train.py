@@ -8,9 +8,10 @@ from torch.utils.data import Dataset, DataLoader
 
 from nltk_utils import bag_of_words, tokenize, stem
 from model import NeuralNet
-
-with open('intents.json', 'r') as f:
+# where happened the py touch training loop  to train the model 
+with open('intents.json', 'r', encoding='utf-8') as f:
     intents = json.load(f)
+
 
 all_words = []
 tags = []
