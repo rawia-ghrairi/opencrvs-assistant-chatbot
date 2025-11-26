@@ -4,28 +4,28 @@
       "tag": "greeting",
       "patterns": ["salut", "bonjour", "hello", "hey", "hi", "coucou"],
       "responses": [
-        "Salut 👋 ! Je suis l’assistant OpenCRVS. Je peux t’aider à installer et déployer OpenCRVS étape par étape. Que veux-tu faire ?",
-        "Bonjour ! Je suis ton guide pour l’installation d’OpenCRVS. Tu veux commencer par les prérequis ou directement le déploiement ?"
+        "Salut 👋 ! Je suis l'assistant OpenCRVS. Je peux t'aider à installer et déployer OpenCRVS étape par étape. Que veux-tu faire ?",
+        "Bonjour ! Je suis ton guide pour l'installation d'OpenCRVS. Tu veux commencer par les prérequis ou directement le déploiement ?"
       ]
     },
     {
       "tag": "about",
       "patterns": ["qui es-tu", "que fais-tu", "aide", "guide opencrvs", "aide opencrvs"],
       "responses": [
-        "Je suis l’assistant OpenCRVS 🤖 ! Je t’aide à installer, configurer et lancer OpenCRVS étape par étape.",
-        "Je suis un chatbot conçu pour t’accompagner dans le déploiement d’OpenCRVS. Je peux t’expliquer chaque étape, du WSL à Docker jusqu’au lancement du projet."
+        "Je suis l'assistant OpenCRVS 🤖 ! Je t'aide à installer, configurer et lancer OpenCRVS étape par étape.",
+        "Je suis un chatbot conçu pour t'accompagner dans le déploiement d'OpenCRVS. Je peux t'expliquer chaque étape, du WSL à Docker jusqu'au lancement du projet."
       ]
     },
     {
       "tag": "prerequis",
-      "patterns": ["prérequis", "requirements", "outils nécessaires", "outils requis", "quoi installer", "logiciels à installer", "préparation"],
+      "patterns": ["Quels sont les prérequis", "requirements", "outils nécessaires", "outils requis", "quoi installer", "logiciels à installer", "préparation"],
       "responses": [
-        "Voici les prérequis :\n- Docker v28.2.2\n- NodeJS v18\n- Git v2.5\n- Windows 11 avec WSL2 (Ubuntu)\nSouhaites-tu que je t’explique comment installer WSL2 ?"
+        "Voici les prérequis :\n- Docker v28.2.2\n- NodeJS v18\n- Git v2.5\n- Windows 11 avec WSL2 (Ubuntu) si vous n'avez pas l'os ubutnu \nSouhaites-tu que je t'explique comment installer WSL2 ?"
       ]
     },
     {
       "tag": "wsl_activation",
-      "patterns": ["installer wsl2", "activer wsl2", "installation wsl2", "comment activer wsl", "sous-système linux windows"],
+      "patterns": ["installer wsl2", "activer wsl2", "installation wsl2", "comment activer wsl", "sous-système linux windows", "j'ai un os windows, comment j'installe wsl2 et je le configure ?"],
       "responses": [
         "Pour activer WSL2 sous Windows : \n 1️⃣ Ouvre PowerShell en administrateur.\n2️⃣ Exécute :\n```bash\ndism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart\ndism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart\n```\n3️⃣ Redémarre ton PC.\n4️⃣ Tape `wsl --install` pour installer la distribution par défaut (Ubuntu).\nSouhaites-tu les étapes pour activer la virtualisation dans le BIOS ?"
       ]
@@ -41,21 +41,21 @@
       "tag": "docker_wsl_integration",
       "patterns": ["docker wsl integration", "intégration docker wsl", "paramètres docker", "docker wsl settings", "docker ubuntu"],
       "responses": [
-        "Pour activer l’intégration Docker avec WSL2 :\n1️⃣ Ouvre Docker Desktop → Settings → Resources → WSL Integration\n2️⃣ Coche 'Ubuntu'\n3️⃣ Sauvegarde et redémarre Docker Desktop.\nSouhaites-tu que je t’explique comment cloner le projet OpenCRVS ou l'étape suivante pour le Poc?"
+        "Pour activer l'intégration Docker avec WSL2 :\n1️⃣ Ouvre Docker Desktop → Settings → Resources → WSL Integration\n2️⃣ Coche 'Ubuntu'\n3️⃣ Sauvegarde et redémarre Docker Desktop.\nSouhaites-tu que je t'explique comment cloner le projet OpenCRVS ou l'étape suivante pour le Poc?"
       ]
     },
     {
       "tag": "clone_repo",
-      "patterns": ["cloner repo", "git clone", "télécharger projet", "cloner opencrvs", "récupérer code source"],
+      "patterns": ["cloner repo", "Quelle est la premiere etape ?", "git clone", "télécharger projet", "cloner opencrvs", "récupérer code source"],
       "responses": [
-        "Depuis Ubuntu, exécute :\n```bash\ngit clone -b master --single-branch https://github.com/opencrvs/opencrvs-core.git\ncd opencrvs-core\n```\nAssure-toi d’être sur la branche master.\nSouhaites-tu que je t’explique la commande `bash setup.sh` ?"
+        "Depuis Ubuntu, exécute :\n```bash\ngit clone -b master --single-branch https://github.com/opencrvs/opencrvs-core.git\ncd opencrvs-core\n```\nAssure-toi d'être sur la branche master.\nSouhaites-tu que je t'explique la commande `bash setup.sh` ?"
       ]
     },
     {
       "tag": "setup_sh",
-      "patterns": ["setup.sh", "bash setup", "installation opencrvs", "déploiement docker", "script d'installation", "configurer opencrvs"],
+      "patterns": ["setup.sh", "bash setup","Quelle est la deuxieme etape ?", "installation opencrvs", "déploiement docker", "script d'installation", "configurer opencrvs"],
       "responses": [
-        "Le script `bash setup.sh` fait tout le travail 💪 :\n- Vérifie les dépendances\n- Télécharge les images Docker\n- Configure le dépôt countryconfig\n- Lance les microservices OpenCRVS Core et les données de test du pays fictif *Farajaland*\n\nExécute :\n```bash\ncd opencrvs-core\nbash setup.sh\n```\nSouhaites-tu voir la configuration `.wslconfig` recommandée avant ?"
+        "lancer la commande bash setup.sh. Le script `bash setup.sh` fait tout le travail 💪 :\n- Vérifie les dépendances\n- Télécharge les images Docker\n- Configure le dépôt countryconfig\n- Lance les microservices OpenCRVS Core et les données de test du pays fictif *Farajaland*\n\nExécute :\n```bash\ncd opencrvs-core\nbash setup.sh\n```\nSouhaites-tu voir la configuration `.wslconfig` recommandée avant ?"
       ]
     },
     {
@@ -74,7 +74,7 @@
     },
     {
       "tag": "start_opencrvs",
-      "patterns": ["lancer opencrvs", "start opencrvs", "démarrer opencrvs", "comment démarrer", "yarn dev"],
+      "patterns": ["lancer opencrvs", "start opencrvs", "Quelle est l'etape suivante ?","démarrer opencrvs", "comment démarrer", "yarn dev"],
       "responses": [
         "Pour démarrer OpenCRVS :\n1️⃣ Dans `opencrvs-core` : `yarn dev`\n2️⃣ Attends la compilation du client.\n3️⃣ Ouvre un nouveau terminal et exécute :\n```bash\ncd ../opencrvs-countryconfig\nyarn dev\n```\nL’interface sera accessible sur 👉 `http://localhost:3020/`\nSouhaites-tu connaître les identifiants de connexion par défaut ?"
       ]
@@ -87,7 +87,7 @@
       ]
     },
     {
-      "tag": "stop_opencrvs",
+      "tag": "arrêter_opencrvs",
       "patterns": ["arrêter opencrvs", "stop opencrvs", "stopper", "fermer opencrvs", "ctrl+c docker"],
       "responses": [
         "Pour arrêter OpenCRVS :\n- Dans le terminal `opencrvs-core`, fais Ctrl+C (parfois deux fois).\n- Dans le terminal `opencrvs-countryconfig`, fais aussi Ctrl+C.\nTu peux ensuite taper `exit` pour quitter les sessions."
@@ -123,6 +123,7 @@
         "s'authentifier",
         "se loguer",
         "identifiants opencrvs",
+        "comment j'authentifie à opencrvs?",
         "compte de test",
         "utilisateurs opencrvs"
       ],
